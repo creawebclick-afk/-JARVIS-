@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS - Tu Asistente Virtual</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- SIDEBAR - Panel lateral -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>JARVIS</h1>
+                <p>Tu Asistente Virtual</p>
+            </div>
+
+            <!-- Tareas -->
+            <div class="panel">
+                <h2>📋 Tareas</h2>
+                <div class="task-input">
+                    <input type="text" id="taskInput" placeholder="Nueva tarea...">
+                    <button onclick="addTask()">+</button>
+                </div>
+                <ul id="taskList" class="task-list"></ul>
+            </div>
+
+            <!-- Recordatorios -->
+            <div class="panel">
+                <h2>🔔 Recordatorios</h2>
+                <div class="reminder-input">
+                    <input type="text" id="reminderText" placeholder="Recordatorio">
+                    <input type="time" id="reminderTime">
+                    <button onclick="addReminder()">+</button>
+                </div>
+                <ul id="reminderList" class="reminder-list"></ul>
+            </div>
+
+            <!-- Notas -->
+            <div class="panel">
+                <h2>📝 Notas</h2>
+                <div class="note-input">
+                    <textarea id="noteText" placeholder="Escribe una nota..."></textarea>
+                    <button onclick="saveNote()">Guardar</button>
+                </div>
+                <ul id="noteList" class="note-list"></ul>
+            </div>
+        </aside>
+
+        <!-- MAIN - Área principal -->
+        <main class="main-content">
+            <!-- Chat -->
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2>💬 Conversa conmigo</h2>
+                    <button onclick="clearChat()" class="btn-secondary">Limpiar</button>
+                </div>
+
+                <div id="chatBox" class="chat-box">
+                    <div class="chat-message bot">
+                        <p>¡Hola! Soy JARVIS, tu asistente virtual. ¿Cómo puedo ayudarte hoy?</p>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <input 
+                        type="text" 
+                        id="userInput" 
+                        placeholder="Escribe un comando o pregunta..."
+                        onkeypress="if(event.key==='Enter') sendMessage()"
+                    >
+                    <button onclick="sendMessage()" class="btn-primary">Enviar</button>
+                </div>
+            </div>
+
+            <!-- Info Panel -->
+            <div class="info-panel">
+                <div class="info-card">
+                    <h3>⏰ Hora</h3>
+                    <p id="currentTime">00:00:00</p>
+                </div>
+                <div class="info-card">
+                    <h3>📅 Fecha</h3>
+                    <p id="currentDate">Cargando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>✅ Tareas completadas</h3>
+                    <p id="completedCount">0/0</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
